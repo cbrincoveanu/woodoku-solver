@@ -55,21 +55,6 @@ class Board:
 
         return score
 
-    def best_move(self, piece):
-        moves = self.valid_moves(piece)
-        scores = [self.score_move(move) for move in moves]
-
-        # If there are no valid moves, return None
-        if not moves:
-            return None
-
-        # Get the indices of the highest scoring moves
-        max_score = max(scores)
-        best_moves = [move for i, move in enumerate(moves) if scores[i] == max_score]
-
-        # Return a random move among the best moves
-        return random.choice(best_moves)
-
     def apply_move(self, move):
         # Save the current state and move before applying the new move
         self.previous_states.append([row.copy() for row in self.board])
